@@ -187,10 +187,10 @@ export const ReportModal: React.FC<Props> = ({ transactions, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm print:bg-white print:p-0">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm print:relative print:block print:inset-auto print:bg-white print:p-0">
 
       {/* Container */}
-      <div className="bg-white w-full max-w-5xl h-[95vh] rounded-xl shadow-2xl flex flex-col print:h-auto print:shadow-none print:w-full print:max-w-none print:rounded-none">
+      <div className="bg-white w-full max-w-5xl h-[95vh] rounded-xl shadow-2xl flex flex-col print:h-full print:shadow-none print:w-full print:max-w-none print:rounded-none">
 
         {/* Header / Controls (Hidden on Print) */}
         <div className="flex justify-between items-center p-4 border-b border-slate-200 print:hidden">
@@ -363,21 +363,21 @@ export const ReportModal: React.FC<Props> = ({ transactions, onClose }) => {
                   <div className="grid grid-cols-4 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-100">
                     <div>
                       <p className="text-xs text-slate-500 uppercase">Receita Bruta</p>
-                      <p className="text-lg font-bold text-slate-900">{formatCurrency(filteredResult.grossTotal)}</p>
+                      <p className="text-lg font-bold text-slate-900 whitespace-nowrap">{formatCurrency(filteredResult.grossTotal)}</p>
                     </div>
                     <div>
                       <p className="text-xs text-slate-500 uppercase">Despesas (OpEx)</p>
-                      <p className="text-lg font-bold text-red-600">{formatCurrency(filteredResult.totalExpenses)}</p>
+                      <p className="text-lg font-bold text-red-600 whitespace-nowrap">{formatCurrency(filteredResult.totalExpenses)}</p>
                     </div>
                     <div>
                       <p className="text-xs text-slate-500 uppercase">Lucro Líquido</p>
-                      <p className={`text-lg font-bold ${filteredResult.netIncome >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
+                      <p className={`text-lg font-bold whitespace-nowrap ${filteredResult.netIncome >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
                         {formatCurrency(filteredResult.netIncome)}
                       </p>
                     </div>
                     <div>
                       <p className="text-xs text-slate-500 uppercase">Reserva Retida (12%)</p>
-                      <p className="text-lg font-bold text-slate-700">{formatCurrency(filteredResult.companyReserve)}</p>
+                      <p className="text-lg font-bold text-slate-700 whitespace-nowrap">{formatCurrency(filteredResult.companyReserve)}</p>
                     </div>
                   </div>
                 </div>
